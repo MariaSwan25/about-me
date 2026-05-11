@@ -1,0 +1,307 @@
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #FDF6F3;
+    --ink: #2A1F1D;
+    --rose: #C47F7F;
+    --rose-light: #F2D9D4;
+    --rose-mid: #D9A5A0;
+    --rose-deep: #A85E5E;
+    --muted: #8A7170;
+    --light: #F8EDEA;
+  }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+  }
+  .page { max-width: 680px; margin: 0 auto; padding: 0 0 60px; animation: fadeIn 1s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 340px; }
+  .hero-photo {
+    background: var(--rose-light);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .photo-placeholder {
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 10px; color: var(--rose); opacity: 0.6; font-size: 11px;
+    letter-spacing: 0.1em; text-transform: uppercase; height: 340px; width: 100%;
+  }
+  .photo-placeholder svg { width: 44px; height: 44px; stroke: var(--rose); }
+  .hero-intro {
+    background: var(--rose-deep);
+    padding: 40px 28px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative;
+  }
+  .hero-intro::before {
+    content: '♡';
+    position: absolute; top: 26px; right: 26px;
+    font-size: 20px; color: rgba(255,255,255,0.2);
+  }
+  .hero-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
+  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 8px; }
+  .hero-title { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; font-weight: 300; }
+
+  /* STRIP */
+  .strip { background: var(--ink); padding: 14px 28px; display: flex; gap: 24px; align-items: center; }
+  .strip-item { display: flex; flex-direction: column; gap: 2px; }
+  .strip-val { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--rose-mid); }
+  .strip-key { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .strip-div { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
+
+  /* SECTIONS */
+  .section { padding: 36px 28px 0; }
+  .section-label {
+    font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--rose); margin-bottom: 16px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rose); opacity: 0.25; }
+
+  /* ABOUT */
+  .about-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; line-height: 1.65; color: var(--ink); }
+  .about-text em { font-style: italic; color: var(--rose-deep); }
+
+  /* INTERESTS */
+  .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .interest-card { background: var(--light); padding: 16px 18px; border-left: 2px solid var(--rose-mid); }
+  .interest-card h4 { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
+  .interest-card p { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--ink); font-weight: 400; line-height: 1.4; }
+
+  /* VALUES */
+  .values-list { display: flex; flex-direction: column; }
+  .value-row { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+  .value-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--rose); min-width: 18px; font-style: italic; }
+  .value-text { font-size: 15px; color: var(--ink); line-height: 1.5; }
+  .value-text strong { font-weight: 500; }
+
+  /* FAMILY BLOCK */
+  .family-block {
+    background: var(--rose-light);
+    margin: 36px 28px 0;
+    padding: 30px 28px;
+    border-top: 2px solid var(--rose-mid);
+    position: relative;
+  }
+  .family-block::before {
+    content: '♡';
+    position: absolute; top: 20px; right: 24px;
+    font-size: 28px; color: var(--rose-mid); opacity: 0.4;
+  }
+  .family-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 14px; }
+  .family-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.6; }
+
+  /* WORK — минимальный */
+  .work-line {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--light); padding: 18px 22px;
+    border-left: 2px solid var(--rose-mid);
+  }
+  .work-icon { font-size: 20px; color: var(--rose); opacity: 0.7; }
+  .work-text { font-size: 15px; color: var(--ink); }
+  .work-text span { color: var(--muted); font-size: 13px; }
+
+  /* GALLERY */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .gallery-cell {
+    background: var(--rose-light);
+    aspect-ratio: 1;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 6px; cursor: pointer;
+    position: relative; overflow: hidden;
+    transition: background 0.2s;
+  }
+  .gallery-cell:hover { background: var(--rose-mid); }
+  .gallery-cell:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+  .gallery-cell svg { width: 28px; height: 28px; stroke: var(--rose); opacity: 0.5; }
+  .gallery-cell span { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); opacity: 0.5; }
+  .gallery-add {
+    border: 2px dashed var(--rose-mid);
+    background: transparent;
+  }
+  .gallery-add svg { opacity: 0.35; }
+  .gallery-add span { opacity: 0.35; }
+
+  /* FOOTER */
+  .footer { padding: 32px 28px 0; display: flex; align-items: center; justify-content: space-between; }
+  .footer-hint { font-size: 11px; color: var(--muted); letter-spacing: 0.08em; }
+  .footer-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--rose-deep); animation: pulse 2.5s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.6)} }
+
+  .edit-hint { text-align: center; padding: 24px 28px 0; font-size: 12px; color: var(--muted); }
+  .edit-hint button { background: none; border: none; color: var(--rose-deep); font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+</style>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-photo">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+        </svg>
+        <span>Ваше фото</span>
+      </div>
+    </div>
+    <div class="hero-intro">
+      <div class="hero-label">Привет, я</div>
+      <div class="hero-name">Мария</div>
+      <div class="hero-title">Варшава · скоро Лондон<br>Люблю глубокие разговоры</div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">
+      <div class="strip-val">Варшава</div>
+      <div class="strip-key">Сейчас</div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val">Лондон</div>
+      <div class="strip-key">Скоро</div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val">EN / RU</div>
+      <div class="strip-key">Языки</div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val">Семья</div>
+      <div class="strip-key">Цель</div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-label">О себе</div>
+    <div class="about-text">
+      Люблю порядок в жизни и хаос в музыке — The Blaze и Bring Me The Horizon в одном плейлисте. Сейчас учу английский и <em>планирую переезд в Великобританию</em>. Верю, что детали решают всё.
+    </div>
+  </div>
+
+  <!-- INTERESTS -->
+  <div class="section">
+    <div class="section-label">Интересы</div>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <h4>Музыка</h4>
+        <p>The Blaze · Bring Me The Horizon · атмосфера и адреналин</p>
+      </div>
+      <div class="interest-card">
+        <h4>Финансы</h4>
+        <p>Планирование, бюджет, думаю о будущем</p>
+      </div>
+      <div class="interest-card">
+        <h4>Языки</h4>
+        <p>Английский — учу осознанно, этой осенью Эдинбург</p>
+      </div>
+      <div class="interest-card">
+        <h4>Аналитика</h4>
+        <p>Данные и визуализация — это моя стихия</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section">
+    <div class="section-label">Что для меня важно</div>
+    <div class="values-list">
+      <div class="value-row">
+        <div class="value-num">01</div>
+        <div class="value-text"><strong>Честность</strong> — предпочитаю неудобную правду красивой лжи</div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">02</div>
+        <div class="value-text"><strong>Рост</strong> — всегда есть следующий уровень, и это мотивирует</div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">03</div>
+        <div class="value-text"><strong>Глубина</strong> — люблю разговоры, после которых думаешь ещё день</div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">04</div>
+        <div class="value-text"><strong>Пространство</strong> — ценю баланс между близостью и свободой</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAMILY -->
+  <div class="family-block">
+    <div class="family-label">Что ищу</div>
+    <div class="family-text">Ищу партнёра — настоящего, надёжного. Человека, который думает о будущем и хочет создать семью. Не завтра, но с этой целью на горизонте.</div>
+  </div>
+
+  <!-- WORK — минимально -->
+  <div class="section">
+    <div class="section-label">Работа</div>
+    <div class="work-line">
+      <div class="work-icon">◈</div>
+      <div class="work-text">
+        Team Lead в IT<br>
+        <span>Аналитика данных · Финансовый сектор</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section">
+    <div class="section-label">Фотогалерея</div>
+    <div class="gallery-grid">
+      <div class="gallery-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Главное фото</span>
+      </div>
+      <div class="gallery-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Фото</span>
+      </div>
+      <div class="gallery-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Фото</span>
+      </div>
+      <div class="gallery-cell">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
+        </svg>
+        <span>Фото</span>
+      </div>
+      <div class="gallery-cell gallery-add">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>
+        </svg>
+        <span>Добавить</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-hint">Открыта к знакомству</div>
+    <div class="footer-dot"></div>
+  </div>
+
+  <div class="edit-hint">
+    Хочешь что-то поправить? <button onclick="sendPrompt('Хочу поправить сайт знакомства: ')">Скажи мне ↗</button>
+  </div>
+
+</div>
