@@ -434,13 +434,13 @@
 
   // FORM — замени URL ниже на свой Google Apps Script URL
   const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxx5iK30tZYv-6utjE5bRm2QJpqwehwGH67cdunuKBL9Kdh98A1h7gQ2oPyjvEtt8Wn/exec';
-  document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const data = Object.fromEntries(new FormData(this));
-    try {
-      await fetch(SCRIPT_URL, { method: 'POST', body: JSON.stringify(data) });
-    } catch(_) {}
-    this.style.display = 'none';
+    const form = this;
+    const params = new URLSearchParams(new FormData(form));
+    fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
+      .catch(() => {});
+    form.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   });
 </script>
