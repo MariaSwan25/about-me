@@ -371,6 +371,18 @@
         <label>Your name (optional)</label>
         <input type="text" name="name" placeholder="How should I call you?">
       </div>
+      <div class="form-group">
+        <label>Age</label>
+        <input type="number" name="age" placeholder="Your age" min="18" max="99">
+      </div>
+      <div class="form-group">
+        <label>City</label>
+        <input type="text" name="city" placeholder="Where are you based?">
+      </div>
+      <div class="form-group">
+        <label>Comment</label>
+        <textarea name="comment" placeholder="Say something..." style="width:100%;padding:12px 16px;border:1px solid var(--rose-mid);background:#fff;font-family:'DM Sans',sans-serif;font-size:15px;color:var(--ink);outline:none;border-radius:2px;resize:vertical;min-height:90px;font-weight:300;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--rose-deep)'" onblur="this.style.borderColor='var(--rose-mid)'"></textarea>
+      </div>
       <button type="submit" class="form-submit">Send →</button>
     </form>
     <div class="form-success" id="formSuccess">Thank you! I'll reach out soon ♡</div>
