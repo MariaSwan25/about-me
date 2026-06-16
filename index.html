@@ -132,6 +132,50 @@
 
   .edit-hint { text-align: center; padding: 24px 28px 0; font-size: 12px; color: var(--muted); }
   .edit-hint button { background: none; border: none; color: var(--rose-deep); font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+
+  /* WELCOME */
+  .welcome-block {
+    margin: 0 28px; padding: 28px;
+    background: var(--light);
+    border-left: 3px solid var(--rose-mid);
+    margin-top: 28px;
+  }
+  .welcome-block p { font-size: 15px; line-height: 1.75; color: var(--ink); }
+  .welcome-block p + p { margin-top: 10px; }
+  .welcome-block em { color: var(--rose-deep); font-style: italic; }
+
+  /* ABOUT STRENGTHS */
+  .strengths-list { list-style: none; margin-top: 16px; display: flex; flex-direction: column; gap: 8px; }
+  .strengths-list li { font-size: 15px; color: var(--ink); line-height: 1.5; padding-left: 16px; position: relative; }
+  .strengths-list li::before { content: '—'; position: absolute; left: 0; color: var(--rose); }
+
+  /* DREAMS */
+  .dreams-block {
+    background: var(--rose-deep);
+    margin: 36px 28px 0;
+    padding: 30px 28px;
+    position: relative;
+  }
+  .dreams-block::before { content: '✦'; position: absolute; top: 20px; right: 24px; font-size: 22px; color: rgba(255,255,255,0.2); }
+  .dreams-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
+  .dreams-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.6; }
+
+  /* LOOKING FOR */
+  .looking-block {
+    background: var(--rose-light);
+    margin: 36px 28px 0;
+    padding: 30px 28px;
+    border-top: 2px solid var(--rose-mid);
+    position: relative;
+  }
+  .looking-block::before { content: '♡'; position: absolute; top: 20px; right: 24px; font-size: 28px; color: var(--rose-mid); opacity: 0.4; }
+  .looking-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 14px; }
+  .looking-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--ink); line-height: 1.6; margin-bottom: 18px; }
+  .looking-qualities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .quality-tag { background: #fff; border: 1px solid var(--rose-mid); color: var(--rose-deep); font-size: 12px; padding: 5px 14px; border-radius: 100px; }
+
+  /* SITE CREDIT */
+  .site-credit { text-align: center; padding: 28px 28px 8px; font-size: 11px; color: var(--muted); font-style: italic; line-height: 1.6; }
 </style>
 
 <div class="page">
@@ -149,7 +193,7 @@
     <div class="hero-intro">
       <div class="hero-label">Hi, I'm</div>
       <div class="hero-name">Maria</div>
-      <div class="hero-title">Saint Petersburg · London soon<br>I love deep conversations</div>
+      <div class="hero-title">Saint Petersburg<br>I love deep conversations</div>
     </div>
   </div>
 
@@ -157,12 +201,7 @@
   <div class="strip">
     <div class="strip-item">
       <div class="strip-val">Saint Petersburg</div>
-      <div class="strip-key">Now</div>
-    </div>
-    <div class="strip-div"></div>
-    <div class="strip-item">
-      <div class="strip-val">London</div>
-      <div class="strip-key">Soon</div>
+      <div class="strip-key">Location</div>
     </div>
     <div class="strip-div"></div>
     <div class="strip-item">
@@ -171,17 +210,33 @@
     </div>
     <div class="strip-div"></div>
     <div class="strip-item">
+      <div class="strip-val">Single</div>
+      <div class="strip-key">Status · Divorced</div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
       <div class="strip-val">Family</div>
       <div class="strip-key">Goal</div>
     </div>
+  </div>
+
+  <!-- WELCOME -->
+  <div class="welcome-block">
+    <p><em>Hey there!</em> If you're reading this, I've already caught your attention — and that's amazing!</p>
+    <p>I'm an analyst and an adventurer, so I decided to try this way of meeting someone. Here you'll find some brief info about me as a person and a woman.</p>
+    <p>Please don't hesitate to leave your WhatsApp number or Instagram link so I can reach out to you :)</p>
   </div>
 
   <!-- ABOUT -->
   <div class="section">
     <div class="section-label">About me</div>
     <div class="about-text">
-      I love order in life and chaos in music — The Blaze and Bring Me The Horizon in the same playlist. Currently learning English and <em>planning to move to the UK</em>. I believe the details make all the difference.
+      Currently learning English and <em>planning to move to the UK</em>. I believe the details make all the difference. My life credo — <em>actions sometimes speak louder than words</em>.
     </div>
+    <ul class="strengths-list">
+      <li>Independent — I have my own career, home and life well set up in my home country</li>
+      <li>I work in IT as a Data Analyst — analytical mindset included, and a little occupational bias sometimes</li>
+    </ul>
   </div>
 
   <!-- INTERESTS -->
@@ -207,6 +262,12 @@
     </div>
   </div>
 
+  <!-- DREAMS -->
+  <div class="dreams-block">
+    <div class="dreams-label">Dreams</div>
+    <div class="dreams-text">I dream of living in a quiet place — a house with a green lawn, 2–3 dogs and 1–2 children.</div>
+  </div>
+
   <!-- VALUES -->
   <div class="section">
     <div class="section-label">What matters to me</div>
@@ -230,10 +291,19 @@
     </div>
   </div>
 
-  <!-- FAMILY -->
-  <div class="family-block">
-    <div class="family-label">What I'm looking for</div>
-    <div class="family-text">Looking for a real, reliable partner. Someone who thinks about the future and wants to build a family. Not tomorrow — but with that goal on the horizon.</div>
+  <!-- LOOKING FOR -->
+  <div class="looking-block">
+    <div class="looking-label">Who I'm looking for</div>
+    <div class="looking-text">A man, 25–40 years old, who wants to start a family in the next year or two. Real, reliable, thinking about the future.</div>
+    <div class="looking-label" style="margin-top:16px;">What I value in a man</div>
+    <div class="looking-qualities">
+      <span class="quality-tag">Intelligence & wisdom</span>
+      <span class="quality-tag">Kindness</span>
+      <span class="quality-tag">Humour</span>
+      <span class="quality-tag">Rationality</span>
+      <span class="quality-tag">Responsibility</span>
+      <span class="quality-tag">Care</span>
+    </div>
   </div>
 
   <!-- WORK — минимально -->
@@ -270,5 +340,7 @@
     <div class="footer-hint">Open to meeting someone</div>
     <div class="footer-dot"></div>
   </div>
+
+  <div class="site-credit">This website was created with the support of not-working dating apps and AI</div>
 
 </div>
