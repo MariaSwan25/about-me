@@ -438,8 +438,7 @@
     e.preventDefault();
     const form = this;
     const params = new URLSearchParams(new FormData(form));
-    fetch(SCRIPT_URL + '?' + params.toString(), { method: 'GET', mode: 'no-cors' })
-      .catch(() => {});
+    new Image().src = SCRIPT_URL + '?' + params.toString();
     form.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
   });
