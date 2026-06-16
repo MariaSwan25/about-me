@@ -116,22 +116,13 @@
   .gallery-cell {
     background: var(--rose-light);
     aspect-ratio: 1;
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 6px; cursor: pointer;
     position: relative; overflow: hidden;
-    transition: background 0.2s;
+    cursor: pointer;
+    transition: opacity 0.2s;
   }
-  .gallery-cell:hover { background: var(--rose-mid); }
+  .gallery-cell:hover { opacity: 0.88; }
   .gallery-cell:first-child { grid-column: span 2; aspect-ratio: 2/1; }
-  .gallery-cell svg { width: 28px; height: 28px; stroke: var(--rose); opacity: 0.5; }
-  .gallery-cell span { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose); opacity: 0.5; }
-  .gallery-add {
-    border: 2px dashed var(--rose-mid);
-    background: transparent;
-  }
-  .gallery-add svg { opacity: 0.35; }
-  .gallery-add span { opacity: 0.35; }
+  .gallery-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
   /* FOOTER */
   .footer { padding: 32px 28px 0; display: flex; align-items: center; justify-content: space-between; }
@@ -261,36 +252,16 @@
   <div class="section">
     <div class="section-label">Photo gallery</div>
     <div class="gallery-grid">
-      <div class="gallery-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-        </svg>
-        <span>Main photo</span>
-      </div>
-      <div class="gallery-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-        </svg>
-        <span>Photo</span>
-      </div>
-      <div class="gallery-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-        </svg>
-        <span>Photo</span>
-      </div>
-      <div class="gallery-cell">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>
-        </svg>
-        <span>Photo</span>
-      </div>
-      <div class="gallery-cell gallery-add">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="9"/><path d="M12 8v8M8 12h8"/>
-        </svg>
-        <span>Add</span>
-      </div>
+      <div class="gallery-cell"><img src="picture_1.png" alt="Photo 1"></div>
+      <div class="gallery-cell"><img src="picture_2.png" alt="Photo 2"></div>
+      <div class="gallery-cell"><img src="picture_3.png" alt="Photo 3"></div>
+      <div class="gallery-cell"><img src="picture_4.png" alt="Photo 4"></div>
+      <div class="gallery-cell"><img src="picture_5.png" alt="Photo 5"></div>
+      <div class="gallery-cell"><img src="picture_6.png" alt="Photo 6"></div>
+      <div class="gallery-cell"><img src="picture_7.png" alt="Photo 7"></div>
+      <div class="gallery-cell"><img src="picture_8.png" alt="Photo 8"></div>
+      <div class="gallery-cell"><img src="picture_9.png" alt="Photo 9"></div>
+      <div class="gallery-cell"><img src="picture_10.png" alt="Photo 10"></div>
     </div>
   </div>
 
