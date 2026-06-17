@@ -1,4 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
@@ -203,38 +210,56 @@
 
   /* MOBILE */
   @media (max-width: 600px) {
+    html { font-size: 17px; }
     .page { padding: 0 0 40px; }
 
     /* Hero — stack vertically */
     .hero { grid-template-columns: 1fr; min-height: auto; }
-    .hero-photo { min-height: 280px; }
-    .hero-intro { padding: 28px 20px 24px; }
-    .hero-name { font-size: 36px; }
+    .hero-photo { min-height: 320px; }
+    .hero-intro { padding: 28px 20px 28px; }
+    .hero-label { font-size: 12px; }
+    .hero-name { font-size: 48px; }
+    .hero-title { font-size: 15px; }
 
     /* Strip — wrap into 2x2 */
     .strip { flex-wrap: wrap; gap: 0; padding: 0; }
-    .strip-item { width: 50%; padding: 14px 20px; }
+    .strip-item { width: 50%; padding: 16px 20px; }
     .strip-div { display: none; }
-    .strip-val { font-size: 17px; }
+    .strip-val { font-size: 20px; }
+    .strip-key { font-size: 11px; }
 
     /* Welcome block */
     .welcome-block { margin: 16px 16px 0; padding: 20px; }
-    .welcome-block p { font-size: 14px; }
+    .welcome-block p { font-size: 16px; }
 
     /* Sections */
     .section { padding: 28px 16px 0; }
-    .about-text { font-size: 19px; }
+    .section-label { font-size: 12px; }
+    .about-text { font-size: 21px; }
+    .strengths-list li { font-size: 16px; }
+    .value-text { font-size: 16px; }
 
     /* Interests — 1 column */
     .interests-grid { grid-template-columns: 1fr; }
+    .interest-card p { font-size: 18px; }
+    .interest-card h4 { font-size: 11px; }
 
     /* Blocks with side margins */
     .dreams-block,
     .looking-block,
     .contact-form-block { margin: 24px 16px 0; padding: 22px 18px; }
-    .dreams-text { font-size: 19px; }
-    .looking-text { font-size: 17px; }
-    .family-text { font-size: 19px; }
+    .dreams-text { font-size: 21px; }
+    .looking-text { font-size: 19px; }
+    .looking-label { font-size: 12px; }
+    .quality-tag { font-size: 14px; padding: 7px 16px; }
+
+    /* Form */
+    .form-group label { font-size: 12px; }
+    .form-group input { font-size: 16px; padding: 14px 16px; }
+    .form-submit { font-size: 15px; padding: 16px; }
+
+    /* Work */
+    .work-text { font-size: 16px; }
 
     /* Gallery — 2 columns on mobile */
     .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 6px; }
@@ -242,11 +267,13 @@
 
     /* Footer */
     .footer { padding: 24px 16px 0; }
-    .site-credit { padding: 20px 16px 8px; }
+    .footer-hint { font-size: 13px; }
+    .site-credit { padding: 20px 16px 8px; font-size: 12px; }
 
     /* Lightbox arrows — larger tap targets */
-    .lightbox-prev, .lightbox-next { font-size: 40px; padding: 12px 16px; }
-    .lightbox-close { top: 14px; right: 16px; font-size: 32px; }
+    .lightbox-prev, .lightbox-next { font-size: 44px; padding: 12px 16px; }
+    .lightbox-close { top: 14px; right: 16px; font-size: 36px; }
+    .lightbox-counter { font-size: 13px; }
   }
 </style>
 
