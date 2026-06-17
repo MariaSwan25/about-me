@@ -485,15 +485,7 @@
     <div class="footer-dot"></div>
   </div>
 
-  <!-- QR CODE -->
-  <div class="qr-section" id="qrSection">
-    <div class="qr-label">Scan to open this page</div>
-    <div id="qrcode"></div>
-    <div class="qr-url">mariaswan25.github.io/about-me</div>
-    <button class="qr-print-btn" onclick="window.print()">Print QR code</button>
-  </div>
-
-  <div class="site-credit">This website was created with the support of not-working dating apps and AI</div>
+<div class="site-credit">This website was created with the support of not-working dating apps and AI</div>
 
 </div>
 
@@ -506,17 +498,7 @@
   <div class="lightbox-counter" id="lbCounter"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  new QRCode(document.getElementById('qrcode'), {
-    text: 'https://mariaswan25.github.io/about-me',
-    width: 180,
-    height: 180,
-    colorDark: '#2A1F1D',
-    colorLight: '#ffffff',
-    correctLevel: QRCode.CorrectLevel.H
-  });
-
   const photos = ['picture_1.png','picture_2.png','picture_3.png','picture_4.png','picture_5.png',
                   'picture_6.png','picture_7.png','picture_8.png','picture_9.png','picture_10.png'];
   let current = 0;
