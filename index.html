@@ -3,25 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --cream: #FDF6F3;
-    --ink: #2A1F1D;
-    --rose: #C47F7F;
-    --rose-light: #F2D9D4;
-    --rose-mid: #D9A5A0;
-    --rose-deep: #A85E5E;
-    --muted: #8A7170;
-    --light: #F8EDEA;
+    --cream: #FAF3DD;
+    --ink: #2D3B3A;
+    --rose: #68B0AB;
+    --rose-light: #C8D5B9;
+    --rose-mid: #8FC0A9;
+    --rose-deep: #4A8B86;
+    --muted: #7A9490;
+    --light: #EDF0E4;
   }
   body {
     background: var(--cream);
     color: var(--ink);
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Nunito', sans-serif;
     font-weight: 300;
   }
   .page { max-width: 680px; margin: 0 auto; padding: 0 0 60px; animation: fadeIn 1s ease; }
@@ -52,13 +52,13 @@
     font-size: 20px; color: rgba(255,255,255,0.2);
   }
   .hero-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
-  .hero-name { font-family: 'Cormorant Garamond', serif; font-size: 44px; font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 8px; }
+  .hero-name { font-family: 'Lora', serif; font-size: 44px; font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 8px; }
   .hero-title { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; font-weight: 300; }
 
   /* STRIP */
-  .strip { background: var(--ink); padding: 14px 28px; display: flex; gap: 24px; align-items: center; }
+  .strip { background: var(--rose-deep); padding: 14px 28px; display: flex; gap: 24px; align-items: center; }
   .strip-item { display: flex; flex-direction: column; gap: 2px; }
-  .strip-val { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--rose-mid); }
+  .strip-val { font-family: 'Lora', serif; font-size: 20px; font-weight: 300; color: var(--rose-mid); }
   .strip-key { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
   .strip-div { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
 
@@ -72,19 +72,19 @@
   .section-label::after { content: ''; flex: 1; height: 1px; background: var(--rose); opacity: 0.25; }
 
   /* ABOUT */
-  .about-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; line-height: 1.65; color: var(--ink); }
+  .about-text { font-family: 'Lora', serif; font-size: 22px; font-weight: 300; line-height: 1.65; color: var(--ink); }
   .about-text em { font-style: italic; color: var(--rose-deep); }
 
   /* INTERESTS */
   .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
   .interest-card { background: var(--light); padding: 16px 18px; border-left: 2px solid var(--rose-mid); }
   .interest-card h4 { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 5px; }
-  .interest-card p { font-family: 'Cormorant Garamond', serif; font-size: 17px; color: var(--ink); font-weight: 400; line-height: 1.4; }
+  .interest-card p { font-family: 'Lora', serif; font-size: 17px; color: var(--ink); font-weight: 400; line-height: 1.4; }
 
   /* VALUES */
   .values-list { display: flex; flex-direction: column; }
   .value-row { display: flex; align-items: baseline; gap: 14px; padding: 13px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
-  .value-num { font-family: 'Cormorant Garamond', serif; font-size: 13px; color: var(--rose); min-width: 18px; font-style: italic; }
+  .value-num { font-family: 'Lora', serif; font-size: 13px; color: var(--rose); min-width: 18px; font-style: italic; }
   .value-text { font-size: 15px; color: var(--ink); line-height: 1.5; }
   .value-text strong { font-weight: 500; }
 
@@ -102,7 +102,7 @@
     font-size: 28px; color: var(--rose-mid); opacity: 0.4;
   }
   .family-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 14px; }
-  .family-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.6; }
+  .family-text { font-family: 'Lora', serif; font-size: 22px; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.6; }
 
   /* WORK — минимальный */
   .work-line {
@@ -138,7 +138,7 @@
   @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.3;transform:scale(0.6)} }
 
   .edit-hint { text-align: center; padding: 24px 28px 0; font-size: 12px; color: var(--muted); }
-  .edit-hint button { background: none; border: none; color: var(--rose-deep); font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+  .edit-hint button { background: none; border: none; color: var(--rose-deep); font-size: 12px; font-family: 'Nunito', sans-serif; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
 
   /* WELCOME */
   .welcome-block {
@@ -165,7 +165,7 @@
   }
   .dreams-block::before { content: '✦'; position: absolute; top: 20px; right: 24px; font-size: 22px; color: rgba(255,255,255,0.2); }
   .dreams-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 14px; }
-  .dreams-text { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.6; }
+  .dreams-text { font-family: 'Lora', serif; font-size: 22px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.6; }
 
   /* LOOKING FOR */
   .looking-block {
@@ -177,7 +177,7 @@
   }
   .looking-block::before { content: '♡'; position: absolute; top: 20px; right: 24px; font-size: 28px; color: var(--rose-mid); opacity: 0.4; }
   .looking-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 14px; }
-  .looking-text { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 300; color: var(--ink); line-height: 1.6; margin-bottom: 18px; }
+  .looking-text { font-family: 'Lora', serif; font-size: 20px; font-weight: 300; color: var(--ink); line-height: 1.6; margin-bottom: 18px; }
   .looking-qualities { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
   .quality-tag { background: #fff; border: 1px solid var(--rose-mid); color: var(--rose-deep); font-size: 12px; padding: 5px 14px; border-radius: 100px; }
 
@@ -186,12 +186,12 @@
   .contact-form-block .form-title { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); margin-bottom: 20px; }
   .form-group { margin-bottom: 16px; }
   .form-group label { display: block; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
-  .form-group input { width: 100%; padding: 12px 16px; border: 1px solid var(--rose-mid); background: #fff; font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink); outline: none; border-radius: 2px; transition: border-color 0.2s; }
+  .form-group input { width: 100%; padding: 12px 16px; border: 1px solid var(--rose-mid); background: #fff; font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--ink); outline: none; border-radius: 2px; transition: border-color 0.2s; }
   .form-group input:focus { border-color: var(--rose-deep); }
   .form-group input::placeholder { color: var(--muted); font-weight: 300; }
-  .form-submit { width: 100%; padding: 14px; background: var(--rose-deep); color: #fff; border: none; font-family: 'DM Sans', sans-serif; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; margin-top: 8px; transition: opacity 0.2s; }
+  .form-submit { width: 100%; padding: 14px; background: var(--rose-deep); color: #fff; border: none; font-family: 'Nunito', sans-serif; font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; margin-top: 8px; transition: opacity 0.2s; }
   .form-submit:hover { opacity: 0.85; }
-  .form-success { display: none; text-align: center; padding: 16px; font-size: 15px; color: var(--rose-deep); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .form-success { display: none; text-align: center; padding: 16px; font-size: 15px; color: var(--rose-deep); font-family: 'Lora', serif; font-style: italic; }
 
   /* LIGHTBOX */
   .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.92); z-index: 1000; align-items: center; justify-content: center; }
@@ -209,7 +209,7 @@
   .qr-section { margin: 36px 28px 0; padding: 30px 28px; background: var(--light); display: flex; flex-direction: column; align-items: center; gap: 14px; border-left: 3px solid var(--rose-mid); }
   .qr-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); align-self: flex-start; }
   .qr-url { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
-  .qr-print-btn { margin-top: 4px; padding: 10px 24px; background: var(--rose-deep); color: #fff; border: none; font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+  .qr-print-btn { margin-top: 4px; padding: 10px 24px; background: var(--rose-deep); color: #fff; border: none; font-family: 'Nunito', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
   .qr-print-btn:hover { opacity: 0.85; }
 
   @media print {
