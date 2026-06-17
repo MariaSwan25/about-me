@@ -28,7 +28,7 @@
   @keyframes fadeIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 
   /* HERO */
-  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 340px; border-radius: 0 0 24px 24px; overflow: hidden; }
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 260px; border-radius: 0 0 20px 20px; overflow: hidden; }
   .hero-photo {
     background: var(--rose-light);
     display: flex; align-items: center; justify-content: center;
@@ -37,30 +37,30 @@
   .photo-placeholder {
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     gap: 10px; color: var(--rose); opacity: 0.6; font-size: 11px;
-    letter-spacing: 0.1em; text-transform: uppercase; height: 340px; width: 100%;
+    letter-spacing: 0.1em; text-transform: uppercase; height: 260px; width: 100%;
   }
   .photo-placeholder svg { width: 44px; height: 44px; stroke: var(--rose); }
   .hero-intro {
     background: var(--rose-deep);
-    padding: 40px 28px;
+    padding: 24px 24px 28px;
     display: flex; flex-direction: column; justify-content: flex-end;
     position: relative;
   }
   .hero-intro::before {
     content: '♡';
-    position: absolute; top: 26px; right: 26px;
-    font-size: 20px; color: rgba(255,255,255,0.2);
+    position: absolute; top: 20px; right: 22px;
+    font-size: 17px; color: rgba(255,255,255,0.18);
   }
-  .hero-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 10px; }
-  .hero-name { font-family: 'Lora', serif; font-size: 44px; font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 8px; }
+  .hero-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 8px; }
+  .hero-name { font-family: 'Lora', serif; font-size: 38px; font-weight: 300; line-height: 1.1; color: #fff; }
   .hero-title { font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.6; font-weight: 300; }
 
   /* STRIP */
-  .strip { background: var(--rose-deep); padding: 14px 28px; display: flex; gap: 24px; align-items: center; }
-  .strip-item { display: flex; flex-direction: column; gap: 2px; }
-  .strip-val { font-family: 'Lora', serif; font-size: 20px; font-weight: 300; color: var(--rose-mid); }
-  .strip-key { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
-  .strip-div { width: 1px; height: 28px; background: rgba(255,255,255,0.1); }
+  .strip { background: var(--cream); padding: 0 16px; display: flex; border-bottom: 1px solid var(--rose-light); }
+  .strip-item { display: flex; flex-direction: column; gap: 3px; padding: 16px 14px; flex: 1; }
+  .strip-val { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; color: var(--rose-deep); }
+  .strip-key { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+  .strip-div { width: 1px; background: var(--rose-light); align-self: stretch; margin: 10px 0; }
 
   /* SECTIONS */
   .section { padding: 36px 28px 0; }
@@ -144,11 +144,12 @@
 
   /* WELCOME */
   .welcome-block {
-    margin: 28px 28px 0; padding: 28px;
+    margin: 28px 28px 0; padding: 28px 28px 26px;
     background: var(--light);
     border-left: 3px solid var(--rose-mid);
     border-radius: 0 16px 16px 0;
   }
+  .welcome-title { font-family: 'Lora', serif; font-size: 20px; font-weight: 400; color: var(--rose-deep); margin-bottom: 16px; line-height: 1.3; }
   .welcome-block p { font-size: 15px; line-height: 1.75; color: var(--ink); }
   .welcome-block p + p { margin-top: 10px; }
   .welcome-block em { color: var(--rose-deep); font-style: italic; }
@@ -242,11 +243,11 @@
     .hero-title { font-size: 15px; }
 
     /* Strip — wrap into 2x2 */
-    .strip { flex-wrap: wrap; gap: 0; padding: 0; }
-    .strip-item { width: 50%; padding: 16px 20px; }
+    .strip { flex-wrap: wrap; gap: 0; padding: 0 8px; }
+    .strip-item { width: 50%; padding: 14px 12px; }
     .strip-div { display: none; }
-    .strip-val { font-size: 20px; }
-    .strip-key { font-size: 11px; }
+    .strip-val { font-size: 14px; }
+    .strip-key { font-size: 10px; }
 
     /* Welcome block */
     .welcome-block { margin: 16px 16px 0; padding: 20px; }
@@ -307,7 +308,6 @@
     <div class="hero-intro">
       <div class="hero-label">Hi, I'm</div>
       <div class="hero-name">Maria</div>
-      <div class="hero-title">Saint Petersburg</div>
     </div>
   </div>
 
@@ -336,7 +336,7 @@
 
   <!-- WELCOME -->
   <div class="welcome-block">
-    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--rose);margin-bottom:14px;">This message is for you</div>
+    <div class="welcome-title">This message is for you</div>
     <p><em>Hey there!</em> If you're reading this, I've already caught your attention — and that's amazing!</p>
     <p>I'm an analyst and an adventurer, so I decided to try this way of meeting someone. Here you'll find some brief info about me as a person and a woman.</p>
     <p>Please don't hesitate to leave your WhatsApp number or Instagram link so I can reach out to you :)</p>
@@ -346,12 +346,12 @@
   <div class="section">
     <div class="section-label">About me</div>
     <div class="about-text">
-      Currently learning English and <em>planning to move to the UK</em>. I believe the details make all the difference. My life credo — <em>actions sometimes speak louder than words</em>.
+      I'm someone who believes life should move forward — <em>with intention and curiosity</em>. I work in IT, lead a team, love diving into complexity and making it understandable. In my free time — cycling or hiking, cooking, embroidery or books on weekdays, or planning the next trip ;)
     </div>
-    <ul class="strengths-list">
-      <li>Independent — I have my own career, home and life well set up in my home country</li>
-      <li>I work in IT as a Data Analyst — analytical mindset included, and a little occupational bias sometimes</li>
-    </ul>
+    <div class="about-text" style="margin-top:18px;font-size:18px;">
+      There's a lot going on in my life right now — new cities, new goals, new horizons. I'd love to have someone by my side who feels the same way. <em>I'm not looking for perfect, I'm looking for real.</em>
+    </div>
+    <div style="margin-top:20px;font-size:13px;color:var(--muted);letter-spacing:0.04em;font-style:italic;">My life credo — actions sometimes speak louder than words.</div>
   </div>
 
   <!-- INTERESTS -->
@@ -360,19 +360,19 @@
     <div class="interests-grid">
       <div class="interest-card">
         <h4>Music</h4>
-        <p>The Blaze · Bring Me The Horizon · atmosphere and adrenaline</p>
+        <p>A music lover — techno and house are my thing. Going to Tomorrowland in December</p>
       </div>
       <div class="interest-card">
-        <h4>Finance</h4>
-        <p>Planning, budgeting, thinking about the future</p>
+        <h4>Planning</h4>
+        <p>Planning, thinking about the future</p>
       </div>
       <div class="interest-card">
         <h4>Languages</h4>
-        <p>English — learning intentionally, Edinburgh this autumn</p>
+        <p>I try really hard, although sometimes it's hard for me because I'm shy</p>
       </div>
       <div class="interest-card">
-        <h4>Analytics</h4>
-        <p>Data and visualisation — my natural element</p>
+        <h4>Work</h4>
+        <p>Interested in data analysis technology</p>
       </div>
     </div>
   </div>
@@ -418,18 +418,6 @@
       <span class="quality-tag">Rationality</span>
       <span class="quality-tag">Responsibility</span>
       <span class="quality-tag">Care</span>
-    </div>
-  </div>
-
-  <!-- WORK — минимально -->
-  <div class="section">
-    <div class="section-label">Work</div>
-    <div class="work-line">
-      <div class="work-icon">◈</div>
-      <div class="work-text">
-        Team Lead in IT<br>
-        <span>Data Analytics · Financial Sector</span>
-      </div>
     </div>
   </div>
 
