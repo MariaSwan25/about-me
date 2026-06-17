@@ -205,6 +205,22 @@
   .lightbox-next { right: 12px; }
   .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 0.1em; }
 
+  /* QR CODE */
+  .qr-section { margin: 36px 28px 0; padding: 30px 28px; background: var(--light); display: flex; flex-direction: column; align-items: center; gap: 14px; border-left: 3px solid var(--rose-mid); }
+  .qr-label { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); align-self: flex-start; }
+  .qr-url { font-size: 13px; color: var(--muted); letter-spacing: 0.04em; }
+  .qr-print-btn { margin-top: 4px; padding: 10px 24px; background: var(--rose-deep); color: #fff; border: none; font-family: 'DM Sans', sans-serif; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+  .qr-print-btn:hover { opacity: 0.85; }
+
+  @media print {
+    body * { visibility: hidden; }
+    .qr-section, .qr-section * { visibility: visible; }
+    .qr-section { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; margin: 0; padding: 40px; background: #fff; border: none; }
+    .qr-print-btn { display: none; }
+    .qr-label { font-size: 14px; }
+    .qr-url { font-size: 16px; }
+  }
+
   /* SITE CREDIT */
   .site-credit { text-align: center; padding: 28px 28px 8px; font-size: 11px; color: var(--muted); font-style: italic; line-height: 1.6; }
 
@@ -469,6 +485,14 @@
     <div class="footer-dot"></div>
   </div>
 
+  <!-- QR CODE -->
+  <div class="qr-section" id="qrSection">
+    <div class="qr-label">Scan to open this page</div>
+    <div id="qrcode"></div>
+    <div class="qr-url">mariaswan25.github.io/about-me</div>
+    <button class="qr-print-btn" onclick="window.print()">Print QR code</button>
+  </div>
+
   <div class="site-credit">This website was created with the support of not-working dating apps and AI</div>
 
 </div>
@@ -482,7 +506,17 @@
   <div class="lightbox-counter" id="lbCounter"></div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
+  new QRCode(document.getElementById('qrcode'), {
+    text: 'https://mariaswan25.github.io/about-me',
+    width: 180,
+    height: 180,
+    colorDark: '#2A1F1D',
+    colorLight: '#ffffff',
+    correctLevel: QRCode.CorrectLevel.H
+  });
+
   const photos = ['picture_1.png','picture_2.png','picture_3.png','picture_4.png','picture_5.png',
                   'picture_6.png','picture_7.png','picture_8.png','picture_9.png','picture_10.png'];
   let current = 0;
