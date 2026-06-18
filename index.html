@@ -382,24 +382,24 @@
     <div class="form-title">Leave your contact</div>
     <form id="contactForm">
       <div class="form-group">
-        <label>WhatsApp number</label>
-        <input type="tel" name="whatsapp" placeholder="+44 7700 000000" value="+44 ">
+        <label>WhatsApp number *</label>
+        <input type="tel" name="whatsapp" placeholder="+7 999 000 00 00" value="+" required>
       </div>
       <div class="form-group">
         <label>Instagram</label>
         <input type="text" name="instagram" placeholder="@username">
       </div>
       <div class="form-group">
-        <label>Your name (optional)</label>
-        <input type="text" name="name" placeholder="How should I call you?">
+        <label>Your name *</label>
+        <input type="text" name="name" placeholder="How should I call you?" required>
       </div>
       <div class="form-group">
-        <label>Age</label>
-        <input type="number" name="age" placeholder="Your age" min="18" max="99">
+        <label>Age *</label>
+        <input type="number" name="age" placeholder="Your age" min="18" max="99" required>
       </div>
       <div class="form-group">
-        <label>City</label>
-        <input type="text" name="city" placeholder="Where are you based?">
+        <label>City *</label>
+        <input type="text" name="city" placeholder="Where are you based?" required>
       </div>
       <div class="form-group">
         <label>Comment</label>
@@ -480,10 +480,18 @@
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const form = this;
-    const params = new URLSearchParams(new FormData(form));
+    const data = new FormData(form);
+
+    // Strip + from whatsapp
+    data.set('whatsapp', (data.get('whatsapp') || '').replace(/\+/g, ''));
+
+    // Send blank if instagram/comment empty
+    if (!(data.get('instagram') || '').trim()) data.set('instagram', 'blank');
+    if (!(data.get('comment') || '').trim()) data.set('comment', 'blank');
+
     const iframe = document.createElement('iframe');
     iframe.style.display = 'none';
-    iframe.src = SCRIPT_URL + '?' + params.toString();
+    iframe.src = SCRIPT_URL + '?' + new URLSearchParams(data).toString();
     document.body.appendChild(iframe);
     setTimeout(function() { document.body.removeChild(iframe); }, 5000);
     form.style.display = 'none';
