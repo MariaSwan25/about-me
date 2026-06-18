@@ -451,7 +451,16 @@
   });
 
   // FORM — замени URL ниже на свой Google Apps Script URL
-  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwxFD8N0t-tETaLrAoDkueG8CdehIY5olBVVLOfrjeBvTN40CyChp7iJlVpOl3gFDbS/exec';
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzqnD1eDHIZZLoq_crSwfhhZTZhBG9G4wKa65OvPrPc1sBBAFB941A_f2_euvWjrofP/exec';
+
+  // Track page view
+  (function() {
+    var f = document.createElement('iframe');
+    f.style.display = 'none';
+    f.src = SCRIPT_URL + '?action=view';
+    document.body.appendChild(f);
+    setTimeout(function() { document.body.removeChild(f); }, 5000);
+  })();
   document.getElementById('contactForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const form = this;
