@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Nunito:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --cream: #FDF9F6;
+    --ink: #4A3540;
+    --sand: #D4CBB3;
+    --blush: #D1A7A0;
+    --pink: #CE96A6;
+    --deep: #CE84AD;
+    --muted: #B8AAA8;
+    --light: #FAF4F6;
+    --sand-light: #F5F1EA;
+  }
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+  }
+  .page { max-width: 680px; margin: 0 auto; padding: 0 0 80px; animation: fadeIn 1s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+
+  /* LANG SWITCHER */
+  .lang-switcher {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 500;
+    background: rgba(253,249,246,0.92);
+    border: 1px solid var(--sand);
+    border-radius: 100px;
+    padding: 7px 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 2px 14px rgba(206,132,173,0.18);
+  }
+  .lang-btn {
+    background: none;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.2s;
+  }
+  .lang-btn.active { color: var(--deep); }
+  .lang-sep { color: var(--sand); font-size: 13px; }
+
+  /* HERO */
+  .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 260px; border-radius: 0 0 28px 28px; overflow: hidden; }
+  .hero-photo { background: var(--sand-light); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-intro {
+    background: linear-gradient(160deg, var(--blush) 0%, var(--deep) 100%);
+    padding: 24px 26px 30px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    position: relative;
+  }
+  .hero-intro::before { content: '♡'; position: absolute; top: 22px; right: 24px; font-size: 18px; color: rgba(255,255,255,0.3); }
+  .hero-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 8px; }
+  .hero-name { font-family: 'Lora', serif; font-size: 38px; font-weight: 300; line-height: 1.1; color: #fff; }
+
+  /* STRIP */
+  .strip { background: var(--cream); padding: 0 18px; display: flex; border-bottom: 1px solid var(--sand); }
+  .strip-item { display: flex; flex-direction: column; gap: 4px; padding: 18px 14px; flex: 1; }
+  .strip-val { font-family: 'Lora', serif; font-size: 15px; font-weight: 400; color: var(--deep); }
+  .strip-key { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+  .strip-div { width: 1px; background: var(--sand); align-self: stretch; margin: 12px 0; }
+
+  /* SECTIONS */
+  .section { padding: 42px 28px 0; }
+  .section-label { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 20px; display: flex; align-items: center; gap: 12px; }
+  .section-label::after { content: ''; flex: 1; height: 1px; background: var(--sand); }
+
+  /* ABOUT */
+  .about-text { font-family: 'Lora', serif; font-size: 20px; font-weight: 300; line-height: 1.72; color: var(--ink); }
+  .about-text em { font-style: italic; color: var(--deep); }
+
+  /* INTERESTS */
+  .interests-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .interest-card {
+    background: #fff; padding: 20px 20px;
+    border-left: 2px solid var(--sand);
+    border-radius: 0 18px 18px 0;
+    box-shadow: 0 3px 16px rgba(206,132,173,0.08);
+  }
+  .interest-card h4 { font-size: 9px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 7px; }
+  .interest-card p { font-family: 'Lora', serif; font-size: 16px; color: var(--ink); font-weight: 400; line-height: 1.5; }
+
+  /* VALUES */
+  .values-list { display: flex; flex-direction: column; }
+  .value-row { display: flex; align-items: baseline; gap: 16px; padding: 15px 0; border-bottom: 1px solid var(--sand-light); }
+  .value-num { font-family: 'Lora', serif; font-size: 13px; color: var(--pink); min-width: 18px; font-style: italic; }
+  .value-text { font-size: 15px; color: var(--ink); line-height: 1.55; }
+  .value-text strong { font-weight: 500; color: var(--deep); }
+
+  /* DREAMS */
+  .dreams-block {
+    background: linear-gradient(140deg, var(--blush) 0%, var(--deep) 100%);
+    margin: 42px 28px 0; padding: 34px 30px;
+    border-radius: 22px; position: relative;
+  }
+  .dreams-block::before { content: '✦'; position: absolute; top: 22px; right: 26px; font-size: 20px; color: rgba(255,255,255,0.22); }
+  .dreams-label { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 16px; }
+  .dreams-text { font-family: 'Lora', serif; font-size: 21px; font-weight: 300; font-style: italic; color: #fff; line-height: 1.68; }
+
+  /* LOOKING FOR */
+  .looking-block {
+    background: var(--sand-light);
+    margin: 42px 28px 0; padding: 34px 30px;
+    border-top: 2px solid var(--sand);
+    border-radius: 22px; position: relative;
+  }
+  .looking-block::before { content: '♡'; position: absolute; top: 22px; right: 26px; font-size: 26px; color: var(--blush); opacity: 0.45; }
+  .looking-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--deep); margin-bottom: 14px; }
+  .looking-text { font-family: 'Lora', serif; font-size: 19px; font-weight: 300; color: var(--ink); line-height: 1.68; margin-bottom: 18px; }
+  .looking-qualities { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 14px; }
+  .quality-tag { background: #fff; border: 1px solid var(--blush); color: var(--deep); font-size: 12px; padding: 7px 18px; border-radius: 100px; }
+
+  /* WELCOME */
+  .welcome-block {
+    margin: 30px 28px 0; padding: 30px 30px;
+    background: #fff;
+    border-left: 3px solid var(--sand);
+    border-radius: 0 22px 22px 0;
+    box-shadow: 0 3px 20px rgba(206,132,173,0.09);
+    position: relative;
+  }
+  .welcome-block::after { content: '✦'; position: absolute; bottom: 20px; right: 24px; font-size: 13px; color: var(--sand); }
+  .welcome-title { font-family: 'Lora', serif; font-size: 21px; font-weight: 400; color: var(--deep); margin-bottom: 18px; line-height: 1.3; }
+  .welcome-block p { font-size: 15px; line-height: 1.82; color: var(--ink); }
+  .welcome-block p + p { margin-top: 11px; }
+  .welcome-block em { color: var(--deep); font-style: italic; }
+
+  /* GALLERY */
+  .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+  .gallery-cell { background: var(--sand-light); aspect-ratio: 1; position: relative; overflow: hidden; cursor: pointer; border-radius: 16px; transition: transform 0.25s ease, opacity 0.2s; }
+  .gallery-cell:hover { transform: scale(1.02); opacity: 0.9; }
+  .gallery-cell:first-child { grid-column: span 2; aspect-ratio: 2/1; }
+  .gallery-cell img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* CONTACT FORM */
+  .contact-form-block {
+    margin: 42px 28px 0; padding: 34px 30px;
+    background: #fff;
+    border-left: 3px solid var(--sand);
+    border-radius: 0 22px 22px 0;
+    box-shadow: 0 3px 20px rgba(206,132,173,0.09);
+    position: relative;
+  }
+  .contact-form-block::after { content: '♡'; position: absolute; top: 28px; right: 30px; font-size: 22px; color: var(--blush); opacity: 0.4; }
+  .contact-form-block .form-title { font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); margin-bottom: 24px; }
+  .form-group { margin-bottom: 18px; }
+  .form-group label { display: block; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .form-group input { width: 100%; padding: 13px 18px; border: 1px solid var(--sand); background: var(--cream); font-family: 'Nunito', sans-serif; font-size: 15px; color: var(--ink); outline: none; border-radius: 12px; transition: border-color 0.2s; }
+  .form-group input:focus { border-color: var(--deep); }
+  .form-group input::placeholder { color: var(--muted); font-weight: 300; }
+  .form-submit { width: 100%; padding: 15px; background: linear-gradient(135deg, var(--pink), var(--deep)); color: #fff; border: none; font-family: 'Nunito', sans-serif; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; margin-top: 10px; border-radius: 12px; transition: opacity 0.2s; }
+  .form-submit:hover { opacity: 0.85; }
+  .form-success { display: none; text-align: center; padding: 18px; font-size: 16px; color: var(--deep); font-family: 'Lora', serif; font-style: italic; }
+
+  /* FOOTER */
+  .footer { padding: 44px 28px 0; display: flex; align-items: center; justify-content: center; }
+  .footer-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); animation: pulse 2.8s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.25;transform:scale(0.5)} }
+
+  /* DECORATIVE */
+  .deco-divider { text-align: center; padding: 22px 0 0; color: var(--blush); font-size: 14px; letter-spacing: 12px; opacity: 0.7; user-select: none; }
+  .footer-hearts { text-align: center; padding: 28px 0 0; font-size: 16px; color: var(--blush); letter-spacing: 14px; opacity: 0.6; animation: pulse 3s ease-in-out infinite; user-select: none; }
+  .site-credit { text-align: center; padding: 28px 28px 8px; font-size: 11px; color: var(--muted); font-style: italic; line-height: 1.7; }
+
+  /* LIGHTBOX */
+  .lightbox { display: none; position: fixed; inset: 0; background: rgba(74,53,64,0.93); z-index: 1000; align-items: center; justify-content: center; }
+  .lightbox.active { display: flex; }
+  .lightbox-img { max-width: 90vw; max-height: 88vh; object-fit: contain; border-radius: 14px; }
+  .lightbox-close { position: absolute; top: 20px; right: 24px; color: #fff; font-size: 28px; cursor: pointer; opacity: 0.7; line-height: 1; }
+  .lightbox-close:hover { opacity: 1; }
+  .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 32px; cursor: pointer; opacity: 0.6; padding: 16px; user-select: none; }
+  .lightbox-prev:hover, .lightbox-next:hover { opacity: 1; }
+  .lightbox-prev { left: 12px; }
+  .lightbox-next { right: 12px; }
+  .lightbox-counter { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.45); font-size: 12px; letter-spacing: 0.1em; }
+
+  /* MOBILE */
+  @media (max-width: 600px) {
+    html { font-size: 17px; }
+    .page { padding: 0 0 44px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-photo { min-height: 300px; }
+    .hero-intro { padding: 24px 20px 26px; }
+    .hero-name { font-size: 44px; }
+    .strip { flex-wrap: wrap; gap: 0; padding: 0 10px; }
+    .strip-item { width: 50%; padding: 14px 12px; }
+    .strip-div { display: none; }
+    .strip-val { font-size: 14px; }
+    .welcome-block { margin: 20px 16px 0; padding: 24px 20px; }
+    .welcome-title { font-size: 19px; }
+    .welcome-block p { font-size: 16px; }
+    .section { padding: 32px 16px 0; }
+    .about-text { font-size: 19px; }
+    .value-text { font-size: 16px; }
+    .interests-grid { grid-template-columns: 1fr; }
+    .interest-card p { font-size: 17px; }
+    .dreams-block, .looking-block, .contact-form-block { margin: 26px 16px 0; padding: 24px 20px; }
+    .dreams-text { font-size: 20px; }
+    .looking-text { font-size: 18px; }
+    .quality-tag { font-size: 14px; padding: 8px 16px; }
+    .form-group input { font-size: 16px; padding: 14px 16px; }
+    .form-submit { font-size: 15px; padding: 16px; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .gallery-cell:first-child { grid-column: span 2; }
+    .gallery-cell { border-radius: 12px; }
+    .footer { padding: 30px 16px 0; }
+    .site-credit { padding: 26px 16px 8px; font-size: 12px; }
+    .lightbox-prev, .lightbox-next { font-size: 44px; padding: 12px 16px; }
+    .lightbox-close { top: 14px; right: 16px; font-size: 36px; }
+    .lang-switcher { top: 12px; right: 12px; }
+  }
+</style>
+
+<!-- LANG SWITCHER -->
+<div class="lang-switcher">
+  <button class="lang-btn active" id="btnRu" onclick="setLang('ru')">RU</button>
+  <span class="lang-sep">|</span>
+  <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+</div>
+
+<div class="page">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-photo">
+      <img src="picture_11.png" alt="Maria" style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+    <div class="hero-intro">
+      <div class="hero-label" data-i18n="hero-label"></div>
+      <div class="hero-name" data-i18n="hero-name"></div>
+    </div>
+  </div>
+
+  <!-- STRIP -->
+  <div class="strip">
+    <div class="strip-item">
+      <div class="strip-val" data-i18n="strip-city-val"></div>
+      <div class="strip-key" data-i18n="strip-city-key"></div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val" data-i18n="strip-bday-val"></div>
+      <div class="strip-key" data-i18n="strip-bday-key"></div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val">EN / RU</div>
+      <div class="strip-key" data-i18n="strip-lang-key"></div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val" data-i18n="strip-status-val"></div>
+      <div class="strip-key" data-i18n="strip-status-key"></div>
+    </div>
+    <div class="strip-div"></div>
+    <div class="strip-item">
+      <div class="strip-val" data-i18n="strip-goal-val"></div>
+      <div class="strip-key" data-i18n="strip-goal-key"></div>
+    </div>
+  </div>
+
+  <div class="deco-divider">♡ ✦ ♡</div>
+
+  <!-- WELCOME -->
+  <div class="welcome-block">
+    <div class="welcome-title" data-i18n="welcome-title"></div>
+    <p data-i18n="welcome-p1"></p>
+    <p data-i18n="welcome-p2"></p>
+    <p data-i18n="welcome-p3"></p>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section">
+    <div class="section-label" data-i18n="about-label"></div>
+    <div class="about-text" data-i18n="about-text1"></div>
+    <div class="about-text" style="margin-top:18px;font-size:18px;" data-i18n="about-text2"></div>
+    <div style="margin-top:20px;font-size:14px;color:var(--deep);letter-spacing:0.03em;font-style:italic;" data-i18n="about-credo"></div>
+  </div>
+
+  <!-- INTERESTS -->
+  <div class="section">
+    <div class="section-label" data-i18n="interests-label"></div>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <h4 data-i18n="int1-h"></h4>
+        <p data-i18n="int1-p"></p>
+      </div>
+      <div class="interest-card">
+        <h4 data-i18n="int2-h"></h4>
+        <p data-i18n="int2-p"></p>
+      </div>
+      <div class="interest-card">
+        <h4 data-i18n="int3-h"></h4>
+        <p data-i18n="int3-p"></p>
+      </div>
+      <div class="interest-card">
+        <h4 data-i18n="int4-h"></h4>
+        <p data-i18n="int4-p"></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="deco-divider">✦ ♡ ✦</div>
+
+  <!-- DREAMS -->
+  <div class="dreams-block">
+    <div class="dreams-label" data-i18n="dreams-label"></div>
+    <div class="dreams-text" data-i18n="dreams-text"></div>
+  </div>
+
+  <!-- VALUES -->
+  <div class="section">
+    <div class="section-label" data-i18n="values-label"></div>
+    <div class="values-list">
+      <div class="value-row">
+        <div class="value-num">01</div>
+        <div class="value-text" data-i18n="val1"></div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">02</div>
+        <div class="value-text" data-i18n="val2"></div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">03</div>
+        <div class="value-text" data-i18n="val3"></div>
+      </div>
+      <div class="value-row">
+        <div class="value-num">04</div>
+        <div class="value-text" data-i18n="val4"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LOOKING FOR -->
+  <div class="looking-block">
+    <div class="looking-label" data-i18n="looking-label1"></div>
+    <div class="looking-text" data-i18n="looking-text"></div>
+    <div class="looking-label" style="margin-top:16px;" data-i18n="looking-label2"></div>
+    <div class="looking-qualities">
+      <span class="quality-tag" data-i18n="q1"></span>
+      <span class="quality-tag" data-i18n="q2"></span>
+      <span class="quality-tag" data-i18n="q3"></span>
+      <span class="quality-tag" data-i18n="q4"></span>
+      <span class="quality-tag" data-i18n="q5"></span>
+      <span class="quality-tag" data-i18n="q6"></span>
+    </div>
+  </div>
+
+  <div class="deco-divider">♡ ✦ ♡</div>
+
+  <!-- GALLERY -->
+  <div class="section">
+    <div class="section-label" data-i18n="gallery-label"></div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-cell" data-idx="0"><img src="picture_1.png" alt="Photo 1"></div>
+      <div class="gallery-cell" data-idx="1"><img src="picture_3.png" alt="Photo 3"></div>
+      <div class="gallery-cell" data-idx="2"><img src="picture_4.png" alt="Photo 4"></div>
+      <div class="gallery-cell" data-idx="3"><img src="picture_5.png" alt="Photo 5"></div>
+      <div class="gallery-cell" data-idx="4"><img src="picture_6.png" alt="Photo 6"></div>
+      <div class="gallery-cell" data-idx="5"><img src="picture_8.png" alt="Photo 8"></div>
+      <div class="gallery-cell" data-idx="6"><img src="picture_9.png" alt="Photo 9"></div>
+      <div class="gallery-cell" data-idx="7"><img src="picture_10.png" alt="Photo 10"></div>
+    </div>
+  </div>
+
+  <!-- CONTACT FORM -->
+  <div class="contact-form-block">
+    <div class="form-title" data-i18n="form-title"></div>
+    <form id="contactForm">
+      <div class="form-group">
+        <label data-i18n="form-label-wa"></label>
+        <input type="tel" name="whatsapp" data-i18n-ph="ph-wa" value="+" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-label-ig"></label>
+        <input type="text" name="instagram" placeholder="@username">
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-label-name"></label>
+        <input type="text" name="name" data-i18n-ph="ph-name" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-label-age"></label>
+        <input type="number" name="age" data-i18n-ph="ph-age" min="18" max="99" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-label-city"></label>
+        <input type="text" name="city" data-i18n-ph="ph-city" required>
+      </div>
+      <div class="form-group">
+        <label data-i18n="form-label-comment"></label>
+        <textarea name="comment" data-i18n-ph="ph-comment" style="width:100%;padding:13px 18px;border:1px solid var(--sand);background:var(--cream);font-family:'Nunito',sans-serif;font-size:15px;color:var(--ink);outline:none;border-radius:12px;resize:vertical;min-height:90px;font-weight:300;transition:border-color 0.2s;" onfocus="this.style.borderColor='var(--deep)'" onblur="this.style.borderColor='var(--sand)'"></textarea>
+      </div>
+      <button type="submit" class="form-submit" data-i18n="form-submit"></button>
+    </form>
+    <div class="form-success" id="formSuccess" data-i18n="form-success"></div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer-hearts">♡ ♡ ♡</div>
+  <div class="footer">
+    <div class="footer-dot"></div>
+  </div>
+  <div class="site-credit" data-i18n="site-credit"></div>
+
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lbClose">✕</span>
+  <span class="lightbox-prev" id="lbPrev">‹</span>
+  <img class="lightbox-img" id="lbImg" src="" alt="">
+  <span class="lightbox-next" id="lbNext">›</span>
+  <div class="lightbox-counter" id="lbCounter"></div>
+</div>
+
+<script>
+  const i18n = {
+    ru: {
+      'hero-label': 'Привет, я',
+      'hero-name': 'Мария',
+      'strip-city-val': 'Санкт-Петербург',
+      'strip-city-key': 'Город',
+      'strip-bday-val': '25 июня',
+      'strip-bday-key': 'День рождения',
+      'strip-lang-key': 'Языки',
+      'strip-status-val': 'Свободна',
+      'strip-status-key': 'Статус · Разведена',
+      'strip-goal-val': 'Семья',
+      'strip-goal-key': 'Цель',
+      'welcome-title': 'Это сообщение для тебя',
+      'welcome-p1': '<em>Привет!</em> Если ты это читаешь, значит, я уже привлекла твоё внимание — и это замечательно!',
+      'welcome-p2': 'Я аналитик и авантюристка, поэтому решила попробовать такой способ знакомства. Здесь ты найдёшь краткую информацию обо мне как о человеке и как о женщине.',
+      'welcome-p3': 'Не стесняйся оставить свой номер WhatsApp или ссылку на Instagram, чтобы я могла с тобой связаться :)',
+      'about-label': 'Обо мне',
+      'about-text1': 'Я человек, который верит, что жизнь должна двигаться вперёд — <em>с намерением и любопытством</em>. В свободное время — велосипед или пешие прогулки, готовка, рисование, вышивка или книги в будни, или планирование следующего путешествия ;)',
+      'about-text2': 'Мне бы хотелось, чтобы рядом был человек, который чувствует так же. <em>Я ищу не идеального — я ищу настоящего.</em>',
+      'about-credo': 'Мой жизненный девиз — поступки говорят громче слов.',
+      'interests-label': 'Интересы',
+      'int1-h': 'Музыка',
+      'int1-p': 'Меломан — техно и хаус мой выбор. Еду на Tomorrowland в декабре',
+      'int2-h': 'Планирование',
+      'int2-p': 'Планирование, размышления о будущем',
+      'int3-h': 'Цель',
+      'int3-p': 'Создать крепкую и любящую семью. Переезд в Великобританию — предпочтительно Шотландия',
+      'int4-h': 'Работа',
+      'int4-p': 'Интересуюсь технологиями анализа данных',
+      'dreams-label': 'Мечты',
+      'dreams-text': 'Я мечтаю жить в тихом месте — дом с зелёным газоном, 2–3 собаки и 1–2 детей.',
+      'values-label': 'Что важно для меня',
+      'val1': '<strong>Честность</strong> — предпочитаю неудобную правду красивой лжи',
+      'val2': '<strong>Развитие</strong> — всегда есть следующий уровень, и это меня вдохновляет',
+      'val3': '<strong>Глубина</strong> — люблю разговоры, которые остаются с тобой ещё день после',
+      'val4': '<strong>Пространство</strong> — ценю баланс между близостью и свободой',
+      'looking-label1': 'Кого я ищу',
+      'looking-text': 'Мужчину 25–35 лет, который хочет создать семью в ближайшие год-два. Настоящего, надёжного, думающего о будущем.',
+      'looking-label2': 'Что ценю в мужчине',
+      'q1': 'Ум и мудрость',
+      'q2': 'Доброта',
+      'q3': 'Юмор',
+      'q4': 'Рациональность',
+      'q5': 'Ответственность',
+      'q6': 'Забота',
+      'gallery-label': 'Фотогалерея',
+      'form-title': 'Оставь свои контакты',
+      'form-label-wa': 'Номер WhatsApp *',
+      'form-label-ig': 'Instagram',
+      'form-label-name': 'Твоё имя *',
+      'form-label-age': 'Возраст *',
+      'form-label-city': 'Город *',
+      'form-label-comment': 'Комментарий',
+      'ph-wa': '+7 999 000 00 00',
+      'ph-name': 'Как тебя зовут?',
+      'ph-age': 'Твой возраст',
+      'ph-city': 'Где ты живёшь?',
+      'ph-comment': 'Напиши что-нибудь...',
+      'form-submit': 'Отправить →',
+      'form-success': 'Спасибо! Я напишу тебе в ближайшее время ♡',
+      'site-credit': 'Этот сайт создан при поддержке не работающих приложений для знакомств и искусственного интеллекта',
+    },
+    en: {
+      'hero-label': "Hi, I'm",
+      'hero-name': 'Maria',
+      'strip-city-val': 'Saint Petersburg',
+      'strip-city-key': 'Location',
+      'strip-bday-val': 'June 25',
+      'strip-bday-key': 'Birthday',
+      'strip-lang-key': 'Languages',
+      'strip-status-val': 'Single',
+      'strip-status-key': 'Status · Divorced',
+      'strip-goal-val': 'Family',
+      'strip-goal-key': 'Goal',
+      'welcome-title': 'This message is for you',
+      'welcome-p1': "<em>Hey there!</em> If you're reading this, I've already caught your attention — and that's amazing!",
+      'welcome-p2': "I'm an analyst and an adventurer, so I decided to try this way of meeting someone. Here you'll find some brief info about me as a person and a woman.",
+      'welcome-p3': "Please don't hesitate to leave your WhatsApp number or Instagram link so I can reach out to you :)",
+      'about-label': 'About me',
+      'about-text1': "I'm someone who believes life should move forward — <em>with intention and curiosity</em>. In my free time — cycling or hiking, cooking, drawing, embroidery or books on weekdays, or planning the next trip ;)",
+      'about-text2': "I'd love to have someone by my side who feels the same way. <em>I'm not looking for perfect, I'm looking for real.</em>",
+      'about-credo': 'My life credo — actions sometimes speak louder than words.',
+      'interests-label': 'Interests',
+      'int1-h': 'Music',
+      'int1-p': 'A music lover — techno and house are my thing. Going to Tomorrowland in December',
+      'int2-h': 'Planning',
+      'int2-p': 'Planning, thinking about the future',
+      'int3-h': 'Goal',
+      'int3-p': 'To build a strong and loving family. Moving to the UK — Scotland preferably',
+      'int4-h': 'Work',
+      'int4-p': 'Interested in data analysis technology',
+      'dreams-label': 'Dreams',
+      'dreams-text': 'I dream of living in a quiet place — a house with a green lawn, 2–3 dogs and 1–2 children.',
+      'values-label': 'What matters to me',
+      'val1': '<strong>Honesty</strong> — I prefer uncomfortable truth to a beautiful lie',
+      'val2': '<strong>Growth</strong> — there\'s always a next level, and that drives me',
+      'val3': '<strong>Depth</strong> — I love conversations that stay with you for a day after',
+      'val4': '<strong>Space</strong> — I value the balance between closeness and freedom',
+      'looking-label1': "Who I'm looking for",
+      'looking-text': 'A man, 25–35 years old, who wants to start a family in the next year or two. Real, reliable, thinking about the future.',
+      'looking-label2': 'What I value in a man',
+      'q1': 'Intelligence & wisdom',
+      'q2': 'Kindness',
+      'q3': 'Humour',
+      'q4': 'Rationality',
+      'q5': 'Responsibility',
+      'q6': 'Care',
+      'gallery-label': 'Photo gallery',
+      'form-title': 'Leave your contact',
+      'form-label-wa': 'WhatsApp number *',
+      'form-label-ig': 'Instagram',
+      'form-label-name': 'Your name *',
+      'form-label-age': 'Age *',
+      'form-label-city': 'City *',
+      'form-label-comment': 'Comment',
+      'ph-wa': '+7 999 000 00 00',
+      'ph-name': 'How should I call you?',
+      'ph-age': 'Your age',
+      'ph-city': 'Where are you based?',
+      'ph-comment': 'Say something...',
+      'form-submit': 'Send →',
+      'form-success': "Thank you! I'll reach out soon ♡",
+      'site-credit': 'This website was created with the support of not-working dating apps and AI',
+    }
+  };
+
+  function setLang(lang) {
+    document.documentElement.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (i18n[lang][key] !== undefined) el.innerHTML = i18n[lang][key];
+    });
+
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.dataset.i18nPh;
+      if (i18n[lang][key] !== undefined) el.placeholder = i18n[lang][key];
+    });
+
+    document.getElementById('btnRu').classList.toggle('active', lang === 'ru');
+    document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+
+    localStorage.setItem('lang', lang);
+  }
+
+  // Init with saved or default language
+  const savedLang = localStorage.getItem('lang') || 'en';
+  setLang(savedLang);
+
+  // LIGHTBOX
+  const photos = ['picture_1.png','picture_3.png','picture_4.png','picture_5.png',
+                  'picture_6.png','picture_8.png','picture_9.png','picture_10.png'];
+  let current = 0;
+  const lb = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lbImg');
+  const lbCounter = document.getElementById('lbCounter');
+
+  function openLightbox(idx) {
+    current = idx;
+    lbImg.src = photos[current];
+    lbCounter.textContent = (current + 1) + ' / ' + photos.length;
+    lb.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    lb.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  function showNext() { current = (current + 1) % photos.length; openLightbox(current); }
+  function showPrev() { current = (current - 1 + photos.length) % photos.length; openLightbox(current); }
+
+  document.querySelectorAll('.gallery-cell').forEach(cell => {
+    cell.style.cursor = 'zoom-in';
+    cell.addEventListener('click', () => openLightbox(+cell.dataset.idx));
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLightbox);
+  document.getElementById('lbNext').addEventListener('click', showNext);
+  document.getElementById('lbPrev').addEventListener('click', showPrev);
+  lb.addEventListener('click', e => { if (e.target === lb) closeLightbox(); });
+  document.addEventListener('keydown', e => {
+    if (!lb.classList.contains('active')) return;
+    if (e.key === 'ArrowRight') showNext();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // FORM
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyZtyL0N9hNGhMlShgcWqLt58NMN9sIWWPWI2QcdcvRPy2t4UYzpkaIbSdUIAJOWbHi/exec';
+
+  (function() {
+    var f = document.createElement('iframe');
+    f.style.display = 'none';
+    f.src = SCRIPT_URL + '?action=view';
+    document.body.appendChild(f);
+    setTimeout(function() { document.body.removeChild(f); }, 5000);
+  })();
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const form = this;
+    const data = new FormData(form);
+    data.set('whatsapp', (data.get('whatsapp') || '').replace(/\+/g, ''));
+    if (!(data.get('instagram') || '').trim()) data.set('instagram', 'blank');
+    if (!(data.get('comment') || '').trim()) data.set('comment', 'blank');
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    iframe.src = SCRIPT_URL + '?' + new URLSearchParams(data).toString();
+    document.body.appendChild(iframe);
+    setTimeout(function() { document.body.removeChild(iframe); }, 5000);
+    form.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  });
+</script>
+</body>
+</html>
